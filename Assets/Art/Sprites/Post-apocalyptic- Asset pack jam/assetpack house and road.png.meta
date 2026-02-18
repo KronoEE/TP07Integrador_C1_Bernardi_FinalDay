@@ -163,27 +163,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: assetpack house and road_0
-      rect:
-        serializedVersion: 2
-        x: 3206
-        y: 1926
-        width: 19
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1381bfb60b2cf10c0800000000000000
-      internalID: -4602746231167707087
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: assetpack house and road_1
       rect:
         serializedVersion: 2
@@ -192,7 +171,7 @@ TextureImporter:
         width: 362
         height: 1154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,7 +192,7 @@ TextureImporter:
         width: 1826
         height: 1149
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,36 +205,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: assetpack house and road_3
-      rect:
-        serializedVersion: 2
-        x: 2282
-        y: 1506
-        width: 14
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1bc31d6a8500e71e0800000000000000
-      internalID: -2198319187354370895
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: assetpack house and road_4
       rect:
         serializedVersion: 2
-        x: 2441
-        y: 681
-        width: 1838
-        height: 1235
+        x: 2448
+        y: 709
+        width: 1784
+        height: 1203
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -263,48 +221,6 @@ TextureImporter:
       bones: []
       spriteID: 5df369587c96604a0800000000000000
       internalID: -6627493495968481323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack house and road_5
-      rect:
-        serializedVersion: 2
-        x: 2870
-        y: 681
-        width: 28
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a27e0f7b9702af380800000000000000
-      internalID: -8936794803414178006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack house and road_6
-      rect:
-        serializedVersion: 2
-        x: 3397
-        y: 657
-        width: 25
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 54a1bb978573d9e10800000000000000
-      internalID: 2205980245620365893
       vertices: []
       indices: 
       edges: []
@@ -318,7 +234,7 @@ TextureImporter:
         width: 2656
         height: 364
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -339,7 +255,7 @@ TextureImporter:
         width: 7
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -354,7 +270,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e38ff78796ee2c949ab574c3516e7bb0
     internalID: 0
     vertices: []
     indices: 

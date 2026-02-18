@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemySettings
   m_EditorClassIdentifier: 
   detectionRadius: 5
-  speed: 2
+  speed: 1
   attackRange: 1.5
   damageAmount: 1
+  maxHealth: 100

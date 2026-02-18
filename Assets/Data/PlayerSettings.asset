@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2147483648
   jumpKey: 32
   attackKey: 101
   reboundForce: 10
   lengthRayCast: 1
-  jumpBoostTime: 5
-  jumpBoostForce: 2
-  maxJumpForce: 10
+  maxJumpForce: 6
   velocity: 6
   maxHealth: 3

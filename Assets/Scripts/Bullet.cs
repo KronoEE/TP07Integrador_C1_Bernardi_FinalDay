@@ -6,9 +6,13 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private int damage = 50;
     [SerializeField] private GameObject impactEffect;
+
+    private float lifeSpan = 3f;
+
     private void Start()
     {
         rb.velocity = transform.right * speed;
+        Destroy(gameObject, lifeSpan);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,5 +31,5 @@ public class Bullet : MonoBehaviour
             Destroy(impact, 0.5f);
         }
         Destroy(gameObject);
-    }
+    } 
 }

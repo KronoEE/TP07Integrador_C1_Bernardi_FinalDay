@@ -1,9 +1,10 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{
-    [SerializeField] PlayerDataSO data;
-    [SerializeField] Animator animator;
+{                    
+    [SerializeField] private PlayerDataSO data;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject deathPanel;
 
     AudioManager audioManager;
     Rigidbody2D rb;
@@ -125,7 +126,7 @@ public class PlayerController : MonoBehaviour
             {
                 audioManager.Stop();
                 //audioManager.PlaySFX(audioManager.LooseSfx);
-                //deathPanel.SetActive(true);
+                deathPanel.SetActive(true);
                 ChangeState(State.PistolDead);
                 isDead = true;
                 Time.timeScale = 0;
@@ -217,9 +218,12 @@ public class PlayerController : MonoBehaviour
 
     private void DoJump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(Vector2.up * data.maxJumpForce, ForceMode2D.Impulse);
-        ChangeState(State.PistolJump);
+        if(isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(Vector2.up * data.maxJumpForce, ForceMode2D.Impulse);
+            ChangeState(State.PistolJump);
+        }
     }
 
     public void EndAttack() 

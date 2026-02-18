@@ -6,17 +6,21 @@ public class EnemyController : MonoBehaviour
     //[SerializeField] private Healthbar healthbar;
     [SerializeField] private Transform player;
     [SerializeField] private EnemyDataSO data;
- 
 
-    private int health;
-    private float movementX;
-    private float hitStunDuration = 0.2f;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
 
+    private bool movingRight = true;
+    private bool isInRange;
     private bool isAttacking;
     private bool isMoving;
     private bool playerAlive;
     private bool isDead;
     private bool isHitted;
+    private int health;
+    private float movementX;
+    private float hitStunDuration = 0.3f;
+
 
     private AudioManager audioManager;
     private Rigidbody2D rb;
@@ -38,6 +42,16 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2((movingRight ? 1 : -1) * data.speed, rb.velocity.y);
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundCheck.position, Vector2.down, 1f, groundLayer);
+
+        if (groundInfo.collider == false)
+        {
+            Flip();
+        }
+    }
     private void Update()
     {
         if (playerAlive && !isDead && !isHitted)
@@ -112,6 +126,10 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            Flip();
+        }
         int playerLayer = LayerMask.NameToLayer("Player");
 
         if (collision.gameObject.layer == playerLayer)
@@ -124,8 +142,8 @@ public class EnemyController : MonoBehaviour
                 FacePlayer(collision.transform);
 
                 isAttacking = true;
-                animator.SetBool("isInRange", true);
-                animator.SetBool("isAttacking", true);
+                animator.SetBool("isInRange", isInRange);
+                animator.SetBool("isAttacking", isAttacking);
 
                 audioManager.PlaySFX(audioManager.ZombieAttackSfx);
 
@@ -154,11 +172,20 @@ public class EnemyController : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
     }
 
+    private void Flip()
+    {
+        movingRight = !movingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
+    }
+
     public void EndAttack()
     {
         isAttacking = false;
-        animator.SetBool("isAttacking", false);
-        animator.SetBool("isInRange", false);
+        isInRange = false;
+        animator.SetBool("isAttacking", isAttacking);
+        animator.SetBool("isInRange", isInRange);
     }
 
     // ================= DEATH =================
