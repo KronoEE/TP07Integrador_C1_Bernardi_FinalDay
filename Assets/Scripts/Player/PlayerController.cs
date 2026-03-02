@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     AudioManager audioManager;
     Rigidbody2D rb;
+    public ParticleSystem jumpEffect;
 
     bool facingRight = true;
     bool isGrounded;
@@ -229,6 +230,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jumping()
     {
+        jumpEffect.Play();
         if (rb.velocity.y < 0)
             ChangeState(State.PistolFall);
     }
