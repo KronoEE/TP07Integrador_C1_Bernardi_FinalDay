@@ -167,6 +167,7 @@ public class PlayerController : MonoBehaviour
                 audioManager.Stop();
                 audioManager.PlaySFX(audioManager.LooseSfx);
                 deathPanel.SetActive(true);
+                healthbar.gameObject.SetActive(false);
                 ChangeState(State.PistolDead);
                 isDead = true;
                 Time.timeScale = 0;
@@ -283,6 +284,10 @@ public class PlayerController : MonoBehaviour
         {
             if (!isSprinting)
             {
+                if (emotions.First(x => x.EmotionType == EmotionType.Tired).bIsActive || emotions.First(x => x.EmotionType == EmotionType.Pain).bIsActive || emotions.First(x => x.EmotionType == EmotionType.Fear).bIsActive)
+                {
+                    return; // No sprint if tired
+                }
                 isSprinting = true;
                 currentSpeed = data.runVelocity;
             }

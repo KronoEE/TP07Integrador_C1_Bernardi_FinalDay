@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,13 +15,22 @@ public class PauseGame : MonoBehaviour
 
     public bool isPaused = false;
 
+    AudioManager audioManager;
+
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         pauseBtn.onClick.AddListener(OnPauseClicked);
         resumeBtn.onClick.AddListener(ResumeGame);
         settingsBtn.onClick.AddListener(OnSettingsClicked);
         homeBtn.onClick.AddListener(OnHomeClicked);
         settingsBackBtn.onClick.AddListener(OnSettingsBack);
+
+        AddHoverSound(pauseBtn);
+        AddHoverSound(resumeBtn);
+        AddHoverSound(settingsBtn);
+        AddHoverSound(homeBtn);
+        AddHoverSound(settingsBackBtn);
     }
     private void OnDestroy()
     {
@@ -68,5 +78,22 @@ public class PauseGame : MonoBehaviour
     private void OnSettingsBack()
     {
         settingsMenu.SetActive(false);
+    }
+    private void AddHoverSound(Button button)
+    {
+        EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
+
+        if (trigger == null)
+            trigger = button.gameObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerEnter;
+
+        entry.callback.AddListener
+            (
+                (eventData) => { audioManager.PlayUI(audioManager.HoverUi); }
+            );
+
+        trigger.triggers.Add(entry);
     }
 }
