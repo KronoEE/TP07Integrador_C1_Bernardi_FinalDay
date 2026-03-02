@@ -18291,6 +18291,95 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1807896777
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 14.700748
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 93.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.066859566
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298037888688557467, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_Name
+      value: Triggerable Wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298037888688557467, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298037888688557467, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915853552947321499, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: ActiveCalm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915853552947321499, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: ActiveFear
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915853552947321499, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: ActivePain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915853552947321499, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: ActiveStress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915853552947321499, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
+      propertyPath: ActiveFatigue
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
 --- !u!1 &1810774030
 GameObject:
   m_ObjectHideFlags: 0
@@ -20593,7 +20682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2915853552947321499, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
       propertyPath: ActiveStress
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2915853552947321499, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
       propertyPath: ActiveFatigue
@@ -20808,6 +20897,7 @@ SceneRoots:
   - {fileID: 704918089}
   - {fileID: 5947271429604742995}
   - {fileID: 388075588471279645}
+  - {fileID: 1807896777}
   - {fileID: 774155685}
   - {fileID: 17610461}
   - {fileID: 1917595546}
