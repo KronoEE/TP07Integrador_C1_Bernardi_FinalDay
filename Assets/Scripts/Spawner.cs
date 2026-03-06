@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
         yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, spawnPoint.position, Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 }

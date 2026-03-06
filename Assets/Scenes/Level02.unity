@@ -2146,7 +2146,7 @@ Transform:
   m_GameObject: {fileID: 390664044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3189626, y: -1.5629427, z: -10}
+  m_LocalPosition: {x: -2.3195686, y: -1.5629427, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3316,6 +3316,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: zombiePrefab
+      value: 
+      objectReference: {fileID: 96506318548456908, guid: 0eefd2af0b586e94895fe4374f922224, type: 3}
     - target: {fileID: 6712511630792324798, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_Name
       value: Spawner (2)
@@ -3923,6 +3927,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: zombiePrefab
+      value: 
+      objectReference: {fileID: 96506318548456908, guid: 0eefd2af0b586e94895fe4374f922224, type: 3}
     - target: {fileID: 6712511630792324798, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_Name
       value: Spawner (1)
@@ -4966,7 +4974,7 @@ Transform:
   m_GameObject: {fileID: 1069726911}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3189626, y: -1.5629427, z: -10}
+  m_LocalPosition: {x: -2.3195686, y: -1.5629427, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14251,6 +14259,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3497311526020273584, guid: 2780d2f6ac73ef74399fd92d29b8e7c4, type: 3}
+      propertyPath: settingsPanel
+      value: 
+      objectReference: {fileID: 632110230}
     - target: {fileID: 5110753760372165702, guid: 2780d2f6ac73ef74399fd92d29b8e7c4, type: 3}
       propertyPath: m_Name
       value: DeathPanel
@@ -14859,6 +14871,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: zombiePrefab
+      value: 
+      objectReference: {fileID: 96506318548456908, guid: 0eefd2af0b586e94895fe4374f922224, type: 3}
     - target: {fileID: 6712511630792324798, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_Name
       value: Spawner

@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    //[SerializeField] private Healthbar healthbar;
-    [SerializeField] private Transform player;
     [SerializeField] private EnemyDataSO data;
 
     public Transform groundCheck;
     public LayerMask groundLayer;
 
-    private bool movingRight = true;
-    private bool isInRange;
-    private bool isAttacking;
-    private bool isMoving;
-    private bool playerAlive;
+    private Transform player;
     private bool isDead;
     private bool isHitted;
     private int health;
-    private float movementX;
     private float hitStunDuration = 0.3f;
+    private bool isChasing;
+
+    // 1 = derecha | -1 = izquierda
+    private int facingDirection;
 
     private CinemachineImpulseSource impulseSource;
     private AudioManager audioManager;
@@ -35,35 +32,101 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         health = data.maxHealth;
-        playerAlive = true;
         isDead = false;
         isHitted = false;
 
         impulseSource = GetComponent<CinemachineImpulseSource>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        }
+
+        // Detectar dirección inicial según el prefab
+        facingDirection = transform.localScale.x >= 0 ? 1 : -1;
     }
 
     private void FixedUpdate()
     {
-        if (isHitted || isDead) return;
+        if (isDead || isHitted) return;
 
-        float distanceToPlayer = player != null ? Vector2.Distance(transform.position, player.position) : Mathf.Infinity;
-
-        if (distanceToPlayer < data.detectionRadius)
+        if (player == null)
         {
+            Patrol();
             return;
         }
-        Patrol();
-    }
-    private void Update()
-    {
-        if (playerAlive && !isDead && !isHitted)
+
+        float distance = Vector2.Distance(transform.position, player.position);
+
+        bool wasChasing = isChasing;
+
+        if (distance <= data.detectionRadius)
         {
-            Movement();
+            isChasing = true;
+        }
+        else
+        {
+            isChasing = false;
+        }
+        if (wasChasing && !isChasing)
+        {
+            Flip();
         }
 
-        animator.SetBool("isMoving", Mathf.Abs(rb.velocity.x) > 0.1f && !isHitted);
+        if (isChasing)
+        {
+            Chase();
+        }
+        else
+        {
+            Patrol();
+        }
+        animator.SetBool("isMoving", Mathf.Abs(rb.velocity.x) > 0.1f);
+    }
+
+    // ================= MOVEMENT =================
+
+    private void Patrol()
+    {
+        rb.velocity = new Vector2(facingDirection * data.speed, rb.velocity.y);
+
+        RaycastHit2D groundInfo = Physics2D.Raycast
+            (
+                groundCheck.position,
+                Vector2.down,
+                1f,
+                groundLayer
+            );
+
+        if (groundInfo.collider == null)
+        {
+            Flip();
+        }
+    }
+
+    private void Chase()
+    {
+        float directionToPlayer = player.position.x - transform.position.x;
+
+        if (Mathf.Abs(directionToPlayer) < 0.1f)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+            return;
+        }
+
+        int moveDir = (int)Mathf.Sign(directionToPlayer);
+
+        rb.velocity = new Vector2(moveDir * data.speed, rb.velocity.y);
+
+        if (moveDir != facingDirection)
+            Flip();
+    }
+
+    private void Flip()
+    {
+        facingDirection *= -1;
+        transform.localScale = new Vector3(facingDirection, 1, 1);
     }
 
     // ================= DAMAGE =================
@@ -71,11 +134,10 @@ public class EnemyController : MonoBehaviour
     public void TakingDamage(int damageAmount)
     {
         if (isDead) return;
+
         CameraShakeManager.Instance.CameraShake(impulseSource);
-        Debug.Log("Zombie recibió daño: " + damageAmount);
 
         health -= damageAmount;
-        Debug.Log("Vida zombie: " + health);
 
         animator.SetTrigger("hitted");
         StartCoroutine(HitStun());
@@ -93,126 +155,46 @@ public class EnemyController : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(hitStunDuration);
+
         isHitted = false;
     }
 
-    // ================= MOVEMENT =================
-
-    private void Movement()
-    {
-        if (player == null) return;
-
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (distanceToPlayer < data.detectionRadius)
-        {
-            Vector2 direction = (player.position - transform.position).normalized;
-
-            rb.velocity = new Vector2(direction.x * data.speed, rb.velocity.y);
-
-            if (direction.x < 0)
-                transform.localScale = new Vector3(-1, 1, 1);
-            else if (direction.x > 0)
-                transform.localScale = new Vector3(1, 1, 1);
-
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-        }
-    }
-
     // ================= ATTACK =================
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
-        {
-            Flip();
-        }
-        int playerLayer = LayerMask.NameToLayer("Player");
-
-        if (collision.gameObject.layer == playerLayer)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             float distance = Vector2.Distance(transform.position, collision.transform.position);
-            bool isInRange = distance <= data.attackRange;
-            if (isInRange)
+            if (distance <= data.attackRange)
             {
-                FacePlayer(collision.transform);
-                isAttacking = true;
-                animator.SetBool("isInRange", isInRange);
-                animator.SetBool("isAttacking", isAttacking);
+                animator.SetBool("isInRange", true);
+                animator.SetBool("isAttacking", true);
                 audioManager.PlaySFX(audioManager.ZombieAttackSfx);
 
-                PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
+                PlayerController playerScript =
+                collision.gameObject.GetComponent<PlayerController>();
 
-                Vector2 directionDamage = new Vector2(transform.position.x, 0);
-                playerScript.TakingDamage(directionDamage, data.damageAmount);
-                playerAlive = !playerScript.isDead;
-                if (!playerAlive)
-                {
-                    isMoving = false;
-                }
+                Vector2 damageDirection = new Vector2(facingDirection, 0);
+                playerScript.TakingDamage(damageDirection, data.damageAmount);
             }
         }
     }
 
-    private void FacePlayer(Transform player)
-    {
-        if (player == null) return;
-
-        if (player.position.x < transform.position.x)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-    }
-    private void Patrol()
-    {
-        rb.velocity = new Vector2((movingRight ? 1 : -1) * data.speed, rb.velocity.y);
-        isMoving = true;
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundCheck.position, Vector2.down, 1f, groundLayer);
-
-        if (groundInfo.collider == false)
-        {
-            Flip();
-        }
-        // If the player is far enough, the enemy will patrol, without facing player, but if the player is close, it will face the player
-        if (player.position.x < transform.position.x)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-    }
-    private void Flip()
-    {
-        movingRight = !movingRight;
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
-    }
     public void EndAttack()
-    {
-        isAttacking = false;
-        isInRange = false;
-        animator.SetBool("isAttacking", isAttacking);
-        animator.SetBool("isInRange", isInRange);
-    }
-
-    // ================= DEATH =================
-    private void Die()
     {
         animator.SetBool("isAttacking", false);
         animator.SetBool("isInRange", false);
+    }
+
+    // ================= DEATH =================
+
+    private void Die()
+    {
+        animator.SetBool("isAttacking", false);
         animator.SetBool("isDead", true);
+
         rb.velocity = Vector2.zero;
+
         Destroy(gameObject, 0.5f);
     }
 }

@@ -1436,7 +1436,7 @@ PrefabInstance:
     - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: zombiePrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 96506318548456908, guid: 0eefd2af0b586e94895fe4374f922224, type: 3}
     - target: {fileID: 6712511630792324798, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_Name
       value: Spawner (1)
@@ -20230,7 +20230,7 @@ PrefabInstance:
     - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: zombiePrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 96506318548456908, guid: 0eefd2af0b586e94895fe4374f922224, type: 3}
     - target: {fileID: 6712511630792324798, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_Name
       value: Spawner
