@@ -3144,6 +3144,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: interval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: maxEnemies
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: zombiePrefab
       value: 
       objectReference: {fileID: 96506318548456908, guid: 0eefd2af0b586e94895fe4374f922224, type: 3}
@@ -14040,6 +14048,10 @@ PrefabInstance:
       propertyPath: settingsPanel
       value: 
       objectReference: {fileID: 632110230}
+    - target: {fileID: 3497311526020273584, guid: 2780d2f6ac73ef74399fd92d29b8e7c4, type: 3}
+      propertyPath: settingsButtonbackBtn
+      value: 
+      objectReference: {fileID: 1474362647}
     - target: {fileID: 5110753760372165702, guid: 2780d2f6ac73ef74399fd92d29b8e7c4, type: 3}
       propertyPath: m_Name
       value: DeathPanel
@@ -14721,6 +14733,14 @@ PrefabInstance:
     - target: {fileID: 27298505957042156, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: interval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: maxEnemies
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: zombiePrefab

@@ -1391,7 +1391,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 27298505957042156, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.12
+      value: 67.9
       objectReference: {fileID: 0}
     - target: {fileID: 27298505957042156, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1432,6 +1432,14 @@ PrefabInstance:
     - target: {fileID: 1911810280480811993, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: interval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: maxEnemies
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: zombiePrefab
@@ -20205,11 +20213,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20.110462
+      value: 26.1436
       objectReference: {fileID: 0}
     - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.6
+      value: 31.5
       objectReference: {fileID: 0}
     - target: {fileID: 896244441349514297, guid: 5b747288fb94a394e8cfcecf22e3272b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20351,7 +20359,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 27298505957042156, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.6
+      value: 27.4
       objectReference: {fileID: 0}
     - target: {fileID: 27298505957042156, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20392,6 +20400,10 @@ PrefabInstance:
     - target: {fileID: 1911810280480811993, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
+      propertyPath: interval
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6214511567231370535, guid: 9d94f532f00e0cd4691595f8e4f2e7df, type: 3}
       propertyPath: zombiePrefab
